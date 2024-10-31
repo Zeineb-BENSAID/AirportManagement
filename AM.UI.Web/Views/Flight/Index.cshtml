@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AM.ApplicationCore.Domain.Flight>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary fw-bold">Liste des vols</h1>
+        <a asp-action="Create" class="btn btn-success btn-lg rounded-pill shadow-sm">
+            <i class="bi bi-plus-circle"></i> Créer un nouveau
+        </a>
+    </div>
+
+    <!-- Formulaire de recherche -->
+    <form asp-action="index" class="mb-4">
+        <fieldset class="p-4 border rounded bg-light shadow-sm">
+            <legend class="text-secondary fw-bold">Recherche</legend>
+            <label class="form-label text-dark fw-semibold">Saisir une date de départ :</label>
+            <input type="date" name="dateDepart" class="form-control d-inline-block w-auto rounded-pill border border-primary shadow-sm" />
+            <button type="submit" class="btn btn-info text-white ms-2 rounded-pill shadow-sm">
+                <i class="bi bi-search"></i> Rechercher
+            </button>
+        </fieldset>
+    </form>
+
+    <!-- Tableau des vols -->
+    <div class="table-responsive">
+        <table class="table table-hover table-striped border rounded shadow-sm">
+            <thead class="table-primary">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Destination)</th>
+                    <th>@Html.DisplayNameFor(model => model.Departure)</th>
+                    <th>@Html.DisplayNameFor(model => model.FlightDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.FlightId)</th>
+                    <th>@Html.DisplayNameFor(model => model.EffectiveArrival)</th>
+                    <th>@Html.DisplayNameFor(model => model.EstimatedDuration)</th>
+                    <th>@Html.DisplayNameFor(model => model.PlaneFK)</th>
+                    <th>@Html.DisplayNameFor(model => model.PilotImage)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Destination)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Departure)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FlightDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FlightId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EffectiveArrival)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EstimatedDuration)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PlaneFK)</td>
+                        <td>
+                            <img src="~/uploads/@item.PilotImage" width="50" height="50" class="rounded-circle border border-secondary shadow-sm" />
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

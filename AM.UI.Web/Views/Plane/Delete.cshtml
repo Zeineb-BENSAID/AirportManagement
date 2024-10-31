@@ -1,0 +1,54 @@
+﻿@model AM.ApplicationCore.Domain.Plane
+
+@{
+    ViewData["Title"] = "Supprimer un Avion";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="display-5 text-danger fw-bold">Confirmation de Suppression</h1>
+        <p class="lead text-secondary">Êtes-vous sûr de vouloir supprimer cet avion de la liste ? Cette action est irréversible.</p>
+    </div>
+
+    <div class="card shadow-sm p-4" style="background-color: #f8f9fa;">
+        <h4 class="text-primary mb-3">Détails de l'Avion</h4>
+        <dl class="row">
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.Capacity)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Capacity)
+            </dd>
+
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.ManufactureDate)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.ManufactureDate)
+            </dd>
+
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.PlaneId)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PlaneId)
+            </dd>
+
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.PlaneType)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PlaneType)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete" class="mt-4 d-flex justify-content-center">
+            <button type="submit" class="btn btn-danger btn-lg mx-2 shadow-sm">
+                <i class="bi bi-trash"></i> Supprimer
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary btn-lg mx-2 shadow-sm">
+                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+            </a>
+        </form>
+    </div>
+</div>

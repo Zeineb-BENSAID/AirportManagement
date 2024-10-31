@@ -1,0 +1,94 @@
+﻿@model AM.ApplicationCore.Domain.Flight
+
+@{
+    ViewData["Title"] = "Create Flight";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-header text-white" style="background: linear-gradient(90deg, #007bff, #6610f2);">
+            <h1 class="h3 text-center fw-bold">Créer un nouveau vol</h1>
+        </div>
+        <div class="card-body" style="background-color: #f8f9fa;">
+            <h4 class="text-primary text-decoration-underline mb-3">Informations du vol</h4>
+            <hr class="mb-4" style="border-top: 2px dashed #dee2e6;" />
+            
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3"></div>
+
+                        <!-- Image du pilote -->
+                        <div class="form-group mb-4">
+                            <label asp-for="PilotImage" class="form-label text-dark fw-semibold"></label>
+                            <input type="file" name="PilotImage" class="form-control form-control-lg border border-primary rounded-pill shadow-sm" />
+                            <span asp-validation-for="PilotImage" class="text-danger"></span>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="form-group mb-4">
+                            <label asp-for="Destination" class="form-label text-dark fw-semibold"></label>
+                            <div class="input-group rounded-pill shadow-sm">
+                                <span class="input-group-text bg-info text-white border-0"><i class="bi bi-geo-alt-fill"></i></span>
+                                <input asp-for="Destination" class="form-control border border-info" placeholder="Entrer la destination" />
+                            </div>
+                            <span asp-validation-for="Destination" class="text-danger"></span>
+                        </div>
+
+                        <!-- Départ -->
+                        <div class="form-group mb-4">
+                            <label asp-for="Departure" class="form-label text-dark fw-semibold"></label>
+                            <div class="input-group rounded-pill shadow-sm">
+                                <span class="input-group-text bg-warning text-dark border-0"><i class="bi bi-box-arrow-in-right"></i></span>
+                                <input asp-for="Departure" class="form-control border border-warning" placeholder="Lieu de départ" />
+                            </div>
+                            <span asp-validation-for="Departure" class="text-danger"></span>
+                        </div>
+
+                        <!-- Date du vol -->
+                        <div class="form-group mb-4">
+                            <label asp-for="FlightDate" class="form-label text-dark fw-semibold"></label>
+                            <input asp-for="FlightDate" type="date" class="form-control border border-secondary rounded-pill shadow-sm" style="background-color: #e9ecef;" />
+                            <span asp-validation-for="FlightDate" class="text-danger"></span>
+                        </div>
+
+                        <!-- Arrivée effective -->
+                        <div class="form-group mb-4">
+                            <label asp-for="EffectiveArrival" class="form-label text-dark fw-semibold"></label>
+                            <input asp-for="EffectiveArrival" type="datetime-local" class="form-control border border-success rounded-pill shadow-sm" />
+                            <span asp-validation-for="EffectiveArrival" class="text-danger"></span>
+                        </div>
+
+                        <!-- Durée estimée -->
+                        <div class="form-group mb-4">
+                            <label asp-for="EstimatedDuration" class="form-label text-dark fw-semibold"></label>
+                            <input asp-for="EstimatedDuration" type="number" class="form-control border border-danger rounded-pill shadow-sm" placeholder="Durée en minutes" />
+                            <span asp-validation-for="EstimatedDuration" class="text-danger"></span>
+                        </div>
+
+                        <!-- Sélection de l'avion -->
+                        <div class="form-group mb-4">
+                            <label asp-for="PlaneFK" class="form-label text-dark fw-semibold"></label>
+                            <select asp-for="PlaneFK" asp-items="ViewBag.mypalanes" class="form-control border border-primary rounded-pill shadow-sm"></select>
+                            <span asp-validation-for="PlaneFK" class="text-danger"></span>
+                        </div>
+
+                        <!-- Bouton de soumission -->
+                        <div class="form-group text-end mt-4">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill shadow-sm fw-semibold">
+                                <i class="bi bi-check-circle-fill"></i> Créer
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg rounded-pill ms-2 shadow-sm">
+                                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

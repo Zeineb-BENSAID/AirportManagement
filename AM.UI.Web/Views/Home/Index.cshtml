@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center py-5" style="background: url('/images/airport-background.jpg') no-repeat center center; background-size: cover; color: #ffffff;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-shadow">Bienvenue sur l'application de gestion des vols</h1>
+        <p class="lead text-shadow">Simplifiez la gestion de vos vols et accédez facilement aux informations clés.</p>
+
+        <!-- Boutons de navigation vers les sections principales -->
+        <div class="d-flex justify-content-center mt-4">
+            <a asp-area="" asp-controller="Flight" asp-action="Index" class="btn btn-primary btn-lg rounded-pill mx-2 shadow-sm">
+                <i class="bi bi-card-list"></i> Voir les vols
+            </a>
+            <a asp-area="" asp-controller="Plane" asp-action="Index" class="btn btn-secondary btn-lg rounded-pill mx-2 shadow-sm">
+                <i class="bi bi-airplane-engines"></i> Gérer les avions
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <i class="bi bi-calendar2-check display-4 text-primary"></i>
+                    <h5 class="card-title mt-3">Planifier les vols</h5>
+                    <p class="card-text">Créez, modifiez, et visualisez les vols planifiés pour une gestion optimale.</p>
+                    <a asp-area="" asp-controller="Flight" asp-action="Create" class="btn btn-outline-primary btn-sm rounded-pill">Créer un vol</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <i class="bi bi-bar-chart-line display-4 text-secondary"></i>
+                    <h5 class="card-title mt-3">Suivi de performances</h5>
+                    <p class="card-text">Accédez aux rapports et analyses pour assurer une opération sans faille.</p>
+                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill">Voir les rapports</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <i class="bi bi-plus-circle display-4 text-success"></i>
+                    <h5 class="card-title mt-3">Ajouter un avion</h5>
+                    <p class="card-text">Ajoutez de nouveaux avions à votre flotte pour assurer une gestion efficace des vols.</p>
+                    <a asp-area="" asp-controller="Plane" asp-action="Create" class="btn btn-outline-success btn-sm rounded-pill">Ajouter un avion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

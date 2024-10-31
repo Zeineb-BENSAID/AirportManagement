@@ -1,0 +1,54 @@
+﻿@model AM.ApplicationCore.Domain.Plane
+
+@{
+    ViewData["Title"] = "Détails de l'Avion";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="display-5 text-primary fw-bold">Détails de l'Avion</h1>
+        <p class="lead text-secondary">Informations complètes sur cet avion</p>
+    </div>
+
+    <div class="card shadow-sm p-4" style="background-color: #f8f9fa;">
+        <h4 class="text-primary mb-3">Caractéristiques de l'Avion</h4>
+        <dl class="row">
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.Capacity)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Capacity)
+            </dd>
+
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.ManufactureDate)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.ManufactureDate)
+            </dd>
+
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.PlaneId)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PlaneId)
+            </dd>
+
+            <dt class="col-sm-3 text-secondary fw-semibold">
+                @Html.DisplayNameFor(model => model.PlaneType)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PlaneType)
+            </dd>
+        </dl>
+
+        <div class="mt-4 d-flex justify-content-center">
+            <a asp-action="Edit" asp-route-id="@Model.PlaneId" class="btn btn-warning btn-lg mx-2 shadow-sm">
+                <i class="bi bi-pencil-square"></i> Modifier
+            </a>
+            <a asp-action="Index" class="btn btn-outline-secondary btn-lg mx-2 shadow-sm">
+                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+            </a>
+        </div>
+    </div>
+</div>
